@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classic Tetris</title>
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@400;600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div id="app">
+        <header>
+            <h1>CLASSIC <span class="highlight">TETRIS</span></h1>
+        </header>
+
+        <main class="game-container">
+            <aside class="left-panel">
+                <div class="panel-box hold-piece">
+                    <h2>HOLD</h2>
+                    <canvas id="holdCanvas" width="100" height="80"></canvas>
+                </div>
+                <div class="panel-box game-info">
+                    <div class="info-item">
+                        <span class="label">LEVEL</span>
+                        <span class="value" id="level">1</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">SCORE</span>
+                        <span class="value" id="score">0</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">LINES</span>
+                        <span class="value" id="lines">0</span>
+                    </div>
+                </div>
+            </aside>
+
+            <div class="game-board-wrapper">
+                <canvas id="gameCanvas" width="300" height="600"></canvas>
+
+                <!-- Start Screen Overlay -->
+                <div id="startScreen" class="modal">
+                    <div class="modal-content">
+                        <h2>TETRIS</h2>
+                        <div class="menu-buttons">
+                            <button id="startBtn">START GAME</button>
+                            <button id="showRankBtn">RANKING</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Game Over Modal -->
+                <div id="gameOverModal" class="modal hidden">
+                    <div class="modal-content">
+                        <h2>GAME OVER</h2>
+                        <p class="final-score">Score: <span id="finalScore">0</span></p>
+
+                        <div id="newRecordEntry" class="hidden">
+                            <p class="new-record-msg">NEW HIGH SCORE!</p>
+                            <input type="text" id="nicknameInput" placeholder="Enter Nickname" maxlength="10">
+                            <button id="saveScoreBtn">SAVE</button>
+                        </div>
+
+                        <div class="menu-buttons">
+                            <button id="restartBtn">RETRY</button>
+                            <button id="homeBtn">MAIN MENU</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ranking Modal -->
+                <div id="rankingModal" class="modal hidden">
+                    <div class="modal-content">
+                        <h2>HIGH SCORES</h2>
+                        <ul id="fullLeaderboardList" class="leaderboard-list">
+                            <!-- filled by js -->
+                        </ul>
+                        <button id="closeRankBtn">CLOSE</button>
+                    </div>
+                </div>
+            </div>
+
+            <aside class="right-panel">
+                <div class="panel-box next-piece" style="display: none;">
+                    <h2>NEXT</h2>
+                    <canvas id="nextCanvas" width="100" height="240"></canvas>
+                </div>
+
+                <div class="controls-info">
+                    <p>↑ / X : Rotate CW</p>
+                    <p>Z : Rotate CCW</p>
+                    <p>← → : Move</p>
+                    <p>↓ : Soft Drop</p>
+                    <p>Space : Hard Drop</p>
+                    <p>Shift : Hold</p>
+                    <p>P : Pause</p>
+                </div>
+            </aside>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
